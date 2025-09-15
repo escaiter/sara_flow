@@ -2,7 +2,7 @@
   "version": 2,
   "builds": [
     {
-      "src": "client/dist/**",
+      "src": "dist/public/**",
       "use": "@vercel/static"
     },
     {
@@ -17,8 +17,8 @@
     },
     {
       "src": "/(.*)",
-      "dest": "/client/dist/$1"
+      "dest": "/dist/public/$1"
     }
   ],
-  "outputDirectory": "client/dist"
+  "outputDirectory": "dist/public"
 }
