@@ -3,7 +3,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
-import { Send, Paperclip } from "lucide-react";
+import { Send } from "lucide-react";
 import { apiRequest } from "@/lib/queryClient";
 import type { Message } from "@shared/schema";
 
@@ -114,12 +114,6 @@ export function ChatInput({ sessionId, setIsTyping }: ChatInputProps) {
     }
   };
 
-  const handleAttachFile = () => {
-    toast({
-      description: "Función de adjuntar archivos próximamente",
-      variant: "default",
-    });
-  };
 
   return (
     <div className="bg-white border border-gray-200 rounded-b-xl shadow-lg border-x border-b p-8" data-testid="chat-input">
@@ -131,19 +125,10 @@ export function ChatInput({ sessionId, setIsTyping }: ChatInputProps) {
             onChange={(e) => setMessage(e.target.value)}
             onKeyPress={handleKeyPress}
             placeholder="Escribe tu consulta..."
-            className="w-full bg-gray-50 border-2 border-gray-200 rounded-2xl px-6 py-5 text-base text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 pr-20 font-medium transition-all duration-200 hover:border-gray-300"
+            className="w-full bg-gray-50 border-2 border-gray-200 rounded-2xl px-6 py-5 text-base text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 font-medium transition-all duration-200 hover:border-gray-300"
             disabled={sendMessageMutation.isPending}
             data-testid="input-message"
           />
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={handleAttachFile}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 p-3 rounded-xl hover:bg-gray-100 transition-all duration-200 border border-gray-200 hover:border-gray-300"
-            data-testid="button-attach"
-          >
-            <Paperclip className="h-5 w-5 text-gray-600" />
-          </Button>
         </div>
         <Button
           onClick={handleSend}

@@ -1,20 +1,10 @@
-import { Settings, Cpu } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { useToast } from "@/hooks/use-toast";
+import { Cpu } from "lucide-react";
 
 interface ChatHeaderProps {
   onClearChat: () => void;
 }
 
 export function ChatHeader({ onClearChat }: ChatHeaderProps) {
-  const { toast } = useToast();
-
-  const handleSettings = () => {
-    toast({
-      description: "Panel de configuración (funcionalidad pendiente)",
-      variant: "default",
-    });
-  };
 
   return (
     <div className="ai-glass ai-border rounded-t-xl shadow-lg circuit-bg" data-testid="chat-header">
@@ -30,17 +20,6 @@ export function ChatHeader({ onClearChat }: ChatHeaderProps) {
             <h3 className="ai-text text-lg font-bold" data-testid="bot-name">NEXUS AI</h3>
             <p className="text-xs text-ai-glow font-mono" data-testid="bot-status">● SISTEMA ACTIVO</p>
           </div>
-        </div>
-        <div className="flex items-center space-x-2">
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={handleSettings}
-            className="ai-button p-3 hover:bg-ai-surface rounded-lg transition-all"
-            data-testid="button-settings"
-          >
-            <Settings className="h-4 w-4 text-ai-glow" />
-          </Button>
         </div>
       </div>
     </div>
