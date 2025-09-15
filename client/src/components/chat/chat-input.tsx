@@ -21,6 +21,8 @@ export function ChatInput({ sessionId }: ChatInputProps) {
     mutationFn: async (messageText: string) => {
       const response = await apiRequest('POST', '/api/chat', {
         message: messageText,
+      }, {
+        'x-session-id': sessionId,
       });
       return response.json();
     },
@@ -59,6 +61,11 @@ export function ChatInput({ sessionId }: ChatInputProps) {
         botMessage,
       ]);
 
+      // Invalidar cache para mantener sincronización
+      queryClient.invalidateQueries({
+        queryKey: ['/api/chat', sessionId, 'messages']
+      });
+      
       toast({
         description: "Mensaje enviado correctamente",
         variant: "success",

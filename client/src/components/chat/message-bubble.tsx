@@ -6,7 +6,10 @@ interface MessageBubbleProps {
 
 export function MessageBubble({ message }: MessageBubbleProps) {
   const isUser = message.sender === 'user';
-  const timeStr = message.timestamp.toLocaleTimeString('es-ES', {
+  const timestamp = typeof message.timestamp === 'string' 
+    ? new Date(message.timestamp) 
+    : message.timestamp;
+  const timeStr = timestamp.toLocaleTimeString('es-ES', {
     hour: '2-digit',
     minute: '2-digit'
   });
