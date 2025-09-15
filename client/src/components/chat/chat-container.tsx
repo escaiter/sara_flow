@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { ChatHeader } from "./chat-header";
-import { ChatMessages } from "./chat-messages";
-import { ChatInput } from "./chat-input";
+import { ChatHeader } from "./chat-header.tsx";
+import { ChatMessages } from "./chat-messages.tsx";
+import { ChatInput } from "./chat-input.tsx";
 
 interface ChatContainerProps {
   sessionId: string;
