@@ -131,7 +131,7 @@ export function ChatInput({ sessionId, setIsTyping }: ChatInputProps) {
             onChange={(e) => setMessage(e.target.value)}
             onKeyPress={handleKeyPress}
             placeholder="Escribe tu consulta..."
-            className="w-full bg-ai-surface border border-ai-border rounded-xl px-5 py-4 text-sm text-white placeholder-ai-glow/60 focus:outline-none focus:ring-2 focus:ring-ai-glow focus:border-ai-glow resize-none pr-12 ai-glow font-medium"
+            className="w-full bg-ai-surface border border-ai-border rounded-xl px-5 py-4 text-sm text-foreground placeholder-ai-glow/60 focus:outline-none focus:ring-2 focus:ring-ai-glow focus:border-ai-glow resize-none pr-12 ai-glow font-medium"
             disabled={sendMessageMutation.isPending}
             data-testid="input-message"
           />
