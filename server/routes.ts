@@ -169,6 +169,27 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Check if session exists (dedicated validation endpoint)
+  app.head("/api/chat/:sessionId/exists", async (req, res) => {
+    try {
+      const { sessionId } = req.params;
+      
+      // Set cache control header to prevent caching
+      res.set('Cache-Control', 'no-store');
+      
+      const session = await storage.getSession(sessionId);
+      if (session) {
+        res.status(204).end(); // Use .end() for HEAD requests instead of .send()
+      } else {
+        res.status(404).end(); // Session not found
+      }
+
+    } catch (error) {
+      console.error('Session validation error:', error);
+      res.status(500).end(); // Use .end() for HEAD requests
+    }
+  });
+
   // Get chat history
   app.get("/api/chat/:sessionId/messages", async (req, res) => {
     try {
@@ -176,8 +197,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       const session = await storage.getSession(sessionId);
       if (!session) {
-        // Return empty array instead of 404 for better UX
-        return res.json([]);
+        return res.status(404).json({ message: 'Session not found' });
       }
 
       const messages = await storage.getMessagesBySession(sessionId);
