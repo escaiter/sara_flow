@@ -122,16 +122,16 @@ export function ChatInput({ sessionId }: ChatInputProps) {
   };
 
   return (
-    <div className="bg-card rounded-b-xl shadow-lg border-x border-b border-border p-4" data-testid="chat-input">
-      <div className="flex items-end space-x-3">
+    <div className="ai-glass ai-border rounded-b-xl shadow-lg border-x border-b border-ai-border p-6 circuit-bg" data-testid="chat-input">
+      <div className="flex items-end space-x-4">
         <div className="flex-1 relative">
           <Input
             type="text"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             onKeyPress={handleKeyPress}
-            placeholder="Escribe tu mensaje..."
-            className="w-full bg-input border border-border rounded-xl px-4 py-3 text-sm text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent resize-none pr-12"
+            placeholder="Escribe tu consulta..."
+            className="w-full bg-ai-surface border border-ai-border rounded-xl px-5 py-4 text-sm text-foreground placeholder-ai-glow/60 focus:outline-none focus:ring-2 focus:ring-ai-glow focus:border-ai-glow resize-none pr-12 ai-glow font-medium"
             disabled={sendMessageMutation.isPending}
             data-testid="input-message"
           />
@@ -139,19 +139,19 @@ export function ChatInput({ sessionId }: ChatInputProps) {
             variant="ghost"
             size="sm"
             onClick={handleAttachFile}
-            className="absolute right-2 top-1/2 transform -translate-y-1/2 p-1 rounded-lg hover:bg-muted transition-colors"
+            className="absolute right-3 top-1/2 transform -translate-y-1/2 p-2 rounded-lg hover:bg-ai-surface transition-colors ai-button"
             data-testid="button-attach"
           >
-            <Paperclip className="h-4 w-4 text-muted-foreground" />
+            <Paperclip className="h-4 w-4 text-ai-glow" />
           </Button>
         </div>
         <Button
           onClick={handleSend}
           disabled={!message.trim() || sendMessageMutation.isPending}
-          className="bg-gradient-to-r from-primary to-blue-600 text-primary-foreground p-3 rounded-xl hover:from-primary/90 hover:to-blue-600/90 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl transform hover:scale-105"
+          className="ai-button bg-gradient-to-r from-ai-glow to-ai-secondary text-white px-6 py-4 rounded-xl hover:from-ai-glow/90 hover:to-ai-secondary/90 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl ai-glow-intense"
           data-testid="button-send"
         >
-          <Send className="h-4 w-4" />
+          <Send className="h-5 w-5" />
         </Button>
       </div>
     </div>

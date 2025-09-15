@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { Settings, Moon, Sun } from "lucide-react";
+import { Settings, Cpu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 
@@ -8,38 +7,28 @@ interface ChatHeaderProps {
 }
 
 export function ChatHeader({ onClearChat }: ChatHeaderProps) {
-  const [isDark, setIsDark] = useState(false);
   const { toast } = useToast();
-
-  const toggleDarkMode = () => {
-    setIsDark(!isDark);
-    document.documentElement.classList.toggle('dark');
-    toast({
-      description: "Modo de tema cambiado",
-      variant: "default",
-    });
-  };
 
   const handleSettings = () => {
     toast({
-      description: "Configuración abierta (funcionalidad pendiente)",
+      description: "Panel de configuración (funcionalidad pendiente)",
       variant: "default",
     });
   };
 
   return (
-    <div className="bg-card rounded-t-xl shadow-lg border border-border" data-testid="chat-header">
-      <div className="flex items-center justify-between p-4 border-b border-border">
-        <div className="flex items-center space-x-3">
+    <div className="ai-glass ai-border rounded-t-xl shadow-lg circuit-bg" data-testid="chat-header">
+      <div className="flex items-center justify-between p-6 border-b border-ai-border">
+        <div className="flex items-center space-x-4">
           <div className="relative">
-            <div className="w-10 h-10 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center">
-              <i className="fas fa-robot text-primary-foreground"></i>
+            <div className="w-12 h-12 ai-glow-intense rounded-full flex items-center justify-center bg-gradient-to-br from-ai-glow via-ai-secondary to-ai-accent">
+              <Cpu className="h-6 w-6 text-white" />
             </div>
-            <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-accent border-2 border-card rounded-full"></div>
+            <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-ai-accent ai-glow rounded-full animate-pulse"></div>
           </div>
           <div>
-            <h3 className="font-semibold text-card-foreground" data-testid="bot-name">Asistente IA</h3>
-            <p className="text-xs text-muted-foreground" data-testid="bot-status">En línea</p>
+            <h3 className="ai-text text-lg font-bold" data-testid="bot-name">NEXUS AI</h3>
+            <p className="text-xs text-ai-glow font-mono" data-testid="bot-status">● SISTEMA ACTIVO</p>
           </div>
         </div>
         <div className="flex items-center space-x-2">
@@ -47,22 +36,10 @@ export function ChatHeader({ onClearChat }: ChatHeaderProps) {
             variant="ghost"
             size="sm"
             onClick={handleSettings}
-            className="p-2 hover:bg-muted rounded-lg transition-colors"
+            className="ai-button p-3 hover:bg-ai-surface rounded-lg transition-all"
             data-testid="button-settings"
           >
-            <Settings className="h-4 w-4 text-muted-foreground" />
-          </Button>
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={toggleDarkMode}
-            className="p-2 hover:bg-muted rounded-lg transition-colors"
-            data-testid="button-dark-mode"
-          >
-            {isDark ? 
-              <Sun className="h-4 w-4 text-muted-foreground" /> : 
-              <Moon className="h-4 w-4 text-muted-foreground" />
-            }
+            <Settings className="h-4 w-4 text-ai-glow" />
           </Button>
         </div>
       </div>

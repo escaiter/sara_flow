@@ -9,7 +9,7 @@ interface ChatContainerProps {
 
 export function ChatContainer({ sessionId, onClearChat }: ChatContainerProps) {
   return (
-    <div className="w-full max-w-md mx-auto" data-testid="chat-container">
+    <div className="w-full max-w-2xl mx-auto ai-glow-intense" data-testid="chat-container">
       <ChatHeader onClearChat={onClearChat} />
       <ChatMessages sessionId={sessionId} />
       <ChatInput sessionId={sessionId} />

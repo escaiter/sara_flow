@@ -40,14 +40,14 @@ export default function ChatPage() {
 
   if (!sessionId) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-primary to-purple-600 flex items-center justify-center">
-        <div className="text-white">Iniciando chat...</div>
+      <div className="min-h-screen bg-background circuit-bg flex items-center justify-center">
+        <div className="ai-text text-lg">INICIANDO SISTEMA NEXUS...</div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary to-purple-600 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-background circuit-bg flex items-center justify-center p-4">
       <ChatContainer sessionId={sessionId} onClearChat={clearChat} />
     </div>
   );
