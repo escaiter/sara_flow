@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { MessageBubble } from "./message-bubble";
 import { TypingIndicator } from "./typing-indicator";
@@ -8,10 +8,10 @@ import type { Message } from "@shared/schema";
 
 interface ChatMessagesProps {
   sessionId: string;
+  isTyping: boolean;
 }
 
-export function ChatMessages({ sessionId }: ChatMessagesProps) {
-  const [isTyping, setIsTyping] = useState(false);
+export function ChatMessages({ sessionId, isTyping }: ChatMessagesProps) {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const { toast } = useToast();
   const queryClient = useQueryClient();

@@ -9,11 +9,11 @@ import type { Message } from "@shared/schema";
 
 interface ChatInputProps {
   sessionId: string;
+  setIsTyping: (typing: boolean) => void;
 }
 
-export function ChatInput({ sessionId }: ChatInputProps) {
+export function ChatInput({ sessionId, setIsTyping }: ChatInputProps) {
   const [message, setMessage] = useState("");
-  const [isTyping, setIsTyping] = useState(false);
   const { toast } = useToast();
   const queryClient = useQueryClient();
 

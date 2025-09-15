@@ -3,32 +3,82 @@ import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { chatMessageSchema } from "@shared/schema";
 import { z } from "zod";
+import { SessionsClient } from "@google-cloud/dialogflow";
 
-// Mock Dialogflow integration - replace with actual @google-cloud/dialogflow
-class MockDialogflowClient {
-  async detectIntent(request: any): Promise<any> {
-    const responses = [
-      "¡Excelente pregunta! Te puedo ayudar con eso.",
-      "Permíteme buscar esa información para ti.",
-      "¿Podrías ser más específico sobre lo que necesitas?",
-      "¡Perfecto! Aquí tienes la información que solicitaste.",
-      "Entiendo tu consulta. Déjame ayudarte con eso.",
-      "Esa es una muy buena pregunta. Te explico:",
-      "Por supuesto, puedo ayudarte con información sobre ese tema.",
-    ];
+// Real Dialogflow integration
+class DialogflowClient {
+  private sessionClient: SessionsClient | null = null;
+  private projectId: string;
+  private isInitialized = false;
+  private initError: string | null = null;
 
-    // Simulate API delay
-    await new Promise(resolve => setTimeout(resolve, 1000 + Math.random() * 2000));
+  constructor() {
+    this.projectId = process.env.DIALOGFLOW_PROJECT_ID || '';
+  }
 
-    return [{
-      queryResult: {
-        fulfillmentText: responses[Math.floor(Math.random() * responses.length)]
+  private async initialize(): Promise<boolean> {
+    if (this.isInitialized) {
+      return this.sessionClient !== null;
+    }
+
+    try {
+      if (!this.projectId) {
+        throw new Error('DIALOGFLOW_PROJECT_ID environment variable is required');
       }
-    }];
+
+      const credentialsJson = process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON;
+      if (!credentialsJson) {
+        throw new Error('GOOGLE_APPLICATION_CREDENTIALS_JSON environment variable is required');
+      }
+
+      const credentials = JSON.parse(credentialsJson);
+      
+      this.sessionClient = new SessionsClient({
+        credentials,
+        projectId: this.projectId,
+      });
+
+      this.isInitialized = true;
+      return true;
+    } catch (error) {
+      this.initError = error instanceof Error ? error.message : 'Unknown initialization error';
+      console.error('Dialogflow client initialization failed:', this.initError);
+      this.isInitialized = true;
+      return false;
+    }
+  }
+
+  async detectIntent(request: { session: string; queryInput: any }): Promise<any> {
+    const isReady = await this.initialize();
+    
+    if (!isReady || !this.sessionClient) {
+      throw new Error(`Dialogflow no disponible: ${this.initError || 'Cliente no inicializado'}`);
+    }
+
+    try {
+      // Create the session path
+      const sessionPath = this.sessionClient.projectAgentSessionPath(
+        this.projectId,
+        request.session
+      );
+
+      // The request to send to Dialogflow
+      const dialogflowRequest = {
+        session: sessionPath,
+        queryInput: request.queryInput,
+      };
+
+      // Send request to Dialogflow
+      const responses = await this.sessionClient.detectIntent(dialogflowRequest);
+      return responses;
+    } catch (error) {
+      console.error('Dialogflow API error:', error);
+      throw error;
+    }
   }
 }
 
-const dialogflowClient = new MockDialogflowClient();
+const dialogflowClient = new DialogflowClient();
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Chat endpoint
@@ -126,7 +176,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       const session = await storage.getSession(sessionId);
       if (!session) {
-        return res.status(404).json({ message: 'Session not found' });
+        // Return empty array instead of 404 for better UX
+        return res.json([]);
       }
 
       const messages = await storage.getMessagesBySession(sessionId);
