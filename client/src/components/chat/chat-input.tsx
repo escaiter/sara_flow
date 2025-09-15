@@ -122,8 +122,8 @@ export function ChatInput({ sessionId, setIsTyping }: ChatInputProps) {
   };
 
   return (
-    <div className="ai-glass ai-border rounded-b-xl shadow-lg border-x border-b border-ai-border p-6 circuit-bg" data-testid="chat-input">
-      <div className="flex items-end space-x-4">
+    <div className="bg-white border border-gray-200 rounded-b-xl shadow-lg border-x border-b p-8" data-testid="chat-input">
+      <div className="flex items-center space-x-6">
         <div className="flex-1 relative">
           <Input
             type="text"
@@ -131,7 +131,7 @@ export function ChatInput({ sessionId, setIsTyping }: ChatInputProps) {
             onChange={(e) => setMessage(e.target.value)}
             onKeyPress={handleKeyPress}
             placeholder="Escribe tu consulta..."
-            className="w-full bg-ai-surface border border-ai-border rounded-xl px-5 py-4 text-sm text-foreground placeholder-ai-glow/60 focus:outline-none focus:ring-2 focus:ring-ai-glow focus:border-ai-glow resize-none pr-12 ai-glow font-medium"
+            className="w-full bg-gray-50 border-2 border-gray-200 rounded-2xl px-6 py-5 text-base text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 pr-20 font-medium transition-all duration-200 hover:border-gray-300"
             disabled={sendMessageMutation.isPending}
             data-testid="input-message"
           />
@@ -139,19 +139,19 @@ export function ChatInput({ sessionId, setIsTyping }: ChatInputProps) {
             variant="ghost"
             size="sm"
             onClick={handleAttachFile}
-            className="absolute right-3 top-1/2 transform -translate-y-1/2 p-2 rounded-lg hover:bg-ai-surface transition-colors ai-button"
+            className="absolute right-4 top-1/2 transform -translate-y-1/2 p-3 rounded-xl hover:bg-gray-100 transition-all duration-200 border border-gray-200 hover:border-gray-300"
             data-testid="button-attach"
           >
-            <Paperclip className="h-4 w-4 text-ai-glow" />
+            <Paperclip className="h-5 w-5 text-gray-600" />
           </Button>
         </div>
         <Button
           onClick={handleSend}
           disabled={!message.trim() || sendMessageMutation.isPending}
-          className="ai-button bg-gradient-to-r from-ai-glow to-ai-secondary text-white px-6 py-4 rounded-xl hover:from-ai-glow/90 hover:to-ai-secondary/90 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl ai-glow-intense"
+          className="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-8 py-5 rounded-2xl hover:from-blue-600 hover:to-blue-700 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl transform hover:scale-105 font-medium"
           data-testid="button-send"
         >
-          <Send className="h-5 w-5" />
+          <Send className="h-6 w-6" />
         </Button>
       </div>
     </div>
