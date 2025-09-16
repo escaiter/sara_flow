@@ -1,5 +1,5 @@
-import { type User, type InsertUser, type Message, type InsertMessage, type ChatSession, users, messages, chatSessions } from "@shared/schema";
-import { db } from "./db";
+import { type User, type InsertUser, type Message, type InsertMessage, type ChatSession, users, messages, chatSessions } from "../shared/schema.js";
+import { db } from "./db.js";
 import { eq, desc } from "drizzle-orm";
 import { randomUUID } from "crypto";
 

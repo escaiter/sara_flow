@@ -7,6 +7,12 @@ async function throwIfResNotOk(res: Response) {
   }
 }
 
+// Get backend URL from environment variable, fallback to relative URL for local development
+const getBackendUrl = () => {
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
+  return backendUrl || ''; // Empty string for relative URLs in development
+};
+
 export async function apiRequest(
   method: string,
   url: string,
@@ -18,7 +24,11 @@ export async function apiRequest(
     ...(additionalHeaders || {}),
   };
   
-  const res = await fetch(url, {
+  // Construct full URL with backend URL if provided
+  const backendUrl = getBackendUrl();
+  const fullUrl = backendUrl ? `${backendUrl}${url}` : url;
+  
+  const res = await fetch(fullUrl, {
     method,
     headers,
     body: data ? JSON.stringify(data) : undefined,
@@ -35,7 +45,12 @@ export const getQueryFn: <T>(options: {
 }) => QueryFunction<T> =
   ({ on401: unauthorizedBehavior }) =>
   async ({ queryKey }) => {
-    const res = await fetch(queryKey.join("/") as string, {
+    // Construct full URL with backend URL if provided
+    const backendUrl = getBackendUrl();
+    const url = queryKey.join("/") as string;
+    const fullUrl = backendUrl ? `${backendUrl}${url}` : url;
+    
+    const res = await fetch(fullUrl, {
       credentials: "include",
     });
 
