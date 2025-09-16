@@ -13,6 +13,18 @@ const getBackendUrl = () => {
   return backendUrl || ''; // Empty string for relative URLs in development
 };
 
+// Helper function to properly join URLs, preventing double slashes
+const joinUrls = (base: string, path: string): string => {
+  if (!base) return path; // If no base URL, return path as-is (for local development)
+  
+  // Remove trailing slash from base and leading slash from path
+  const normalizedBase = base.replace(/\/+$/, '');
+  const normalizedPath = path.replace(/^\/+/, '');
+  
+  // Join with single slash
+  return normalizedPath ? `${normalizedBase}/${normalizedPath}` : normalizedBase;
+};
+
 export async function apiRequest(
   method: string,
   url: string,
@@ -26,7 +38,7 @@ export async function apiRequest(
   
   // Construct full URL with backend URL if provided
   const backendUrl = getBackendUrl();
-  const fullUrl = backendUrl ? `${backendUrl}${url}` : url;
+  const fullUrl = joinUrls(backendUrl, url);
   
   const res = await fetch(fullUrl, {
     method,
@@ -39,6 +51,23 @@ export async function apiRequest(
   return res;
 }
 
+// Helper function for simple fetch requests (GET, HEAD, etc.)
+export async function apiFetch(
+  url: string,
+  options: RequestInit = {}
+): Promise<Response> {
+  const backendUrl = getBackendUrl();
+  const fullUrl = joinUrls(backendUrl, url);
+  
+  const res = await fetch(fullUrl, {
+    credentials: "include",
+    cache: 'no-store', // Prevent caching issues for session validation
+    ...options,
+  });
+
+  return res; // Don't throw for HEAD requests that return 404
+}
+
 type UnauthorizedBehavior = "returnNull" | "throw";
 export const getQueryFn: <T>(options: {
   on401: UnauthorizedBehavior;
@@ -48,7 +77,7 @@ export const getQueryFn: <T>(options: {
     // Construct full URL with backend URL if provided
     const backendUrl = getBackendUrl();
     const url = queryKey.join("/") as string;
-    const fullUrl = backendUrl ? `${backendUrl}${url}` : url;
+    const fullUrl = joinUrls(backendUrl, url);
     
     const res = await fetch(fullUrl, {
       credentials: "include",

@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { ChatContainer } from "@/components/chat/chat-container";
+import { apiFetch, apiRequest } from "@/lib/queryClient";
 
 export default function ChatPage() {
   const [sessionId, setSessionId] = useState<string | null>(null);
@@ -42,9 +43,8 @@ export default function ChatPage() {
 
     try {
       // Use the dedicated validation endpoint with cache control
-      const response = await fetch(`/api/chat/${sessionId}/exists`, {
+      const response = await apiFetch(`/api/chat/${sessionId}/exists`, {
         method: 'HEAD',
-        cache: 'no-store', // Prevent caching issues
       });
       
       if (response.status === 204 || response.status === 200) {
@@ -72,13 +72,7 @@ export default function ChatPage() {
   const createNewSession = async () => {
     setError(null);
     try {
-      const response = await fetch('/api/chat/session', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        cache: 'no-store',
-      });
+      const response = await apiRequest('POST', '/api/chat/session');
       
       if (response.ok) {
         const data = await response.json();
