@@ -1,5 +1,4 @@
 {
   "version": 2,
-  "installCommand": "npm install",
-  "buildCommand": "npm install --production=false && npm run build && rm -rf public && mkdir -p public && cp -r dist/public/* public/"
+  "buildCommand": "vite build"
 }
