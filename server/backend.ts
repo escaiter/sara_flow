@@ -99,7 +99,7 @@ app.get("/health", (req, res) => {
 (async () => {
   try {
     // Register API routes
-    const server = await registerRoutes(app);
+    await registerRoutes(app);
 
     // Error handling middleware
     app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
@@ -120,7 +120,7 @@ app.get("/health", (req, res) => {
     const port = parseInt(process.env.PORT || '5000', 10);
     
     // Fix: Use proper Express server binding with separate arguments
-    server.listen(port, '0.0.0.0', () => {
+    const server = app.listen(port, '0.0.0.0', () => {
       console.log(`${new Date().toLocaleTimeString("en-US", {
         hour: "numeric",
         minute: "2-digit",
