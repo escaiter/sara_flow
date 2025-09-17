@@ -1,0 +1,57 @@
+2025-09-17T00:56:48.920093451Z ==> Cloning from https://github.com/escaiter/sara_flow
+2025-09-17T00:56:49.477585711Z ==> Checking out commit a3ea65684a03c2f82ff9d54e696832f694d68464 in branch main
+2025-09-17T00:56:50.990264866Z ==> Using Node.js version 22.16.0 (default)
+2025-09-17T00:56:51.013727883Z ==> Docs on specifying a Node.js version: https://render.com/docs/node-version
+2025-09-17T00:56:52.812026753Z ==> Running build command 'npx esbuild server/index.ts --platform=node --bundle --format=esm --outfile=dist/index.js'...
+2025-09-17T00:56:55.425227719Z ✘ [ERROR] Could not resolve "express"
+2025-09-17T00:56:55.42524696Z 
+2025-09-17T00:56:55.42525045Z     server/index.ts:1:62:
+2025-09-17T00:56:55.42525398Z       1 │ ...t express, { type Request, Response, NextFunction } from "express";
+2025-09-17T00:56:55.42525626Z         ╵                                                             ~~~~~~~~~
+2025-09-17T00:56:55.42525819Z 
+2025-09-17T00:56:55.42526095Z   You can mark the path "express" as external to exclude it from the bundle, which will remove this error and leave the unresolved path in the bundle.
+2025-09-17T00:56:55.42526291Z 
+2025-09-17T00:56:55.42526518Z ✘ [ERROR] Could not resolve "cors"
+2025-09-17T00:56:55.42526717Z 
+2025-09-17T00:56:55.42526924Z     server/index.ts:2:17:
+2025-09-17T00:56:55.425300041Z       2 │ import cors from "cors";
+2025-09-17T00:56:55.425306971Z         ╵                  ~~~~~~
+2025-09-17T00:56:55.425310281Z 
+2025-09-17T00:56:55.425313721Z   You can mark the path "cors" as external to exclude it from the bundle, which will remove this error and leave the unresolved path in the bundle.
+2025-09-17T00:56:55.425316582Z 
+2025-09-17T00:56:55.425595759Z ✘ [ERROR] Could not resolve "express"
+2025-09-17T00:56:55.42560236Z 
+2025-09-17T00:56:55.425605209Z     server/vite.ts:1:38:
+2025-09-17T00:56:55.42560841Z       1 │ import express, { type Express } from "express";
+2025-09-17T00:56:55.4256117Z         ╵                                       ~~~~~~~~~
+2025-09-17T00:56:55.42561511Z 
+2025-09-17T00:56:55.42561988Z   You can mark the path "express" as external to exclude it from the bundle, which will remove this error and leave the unresolved path in the bundle.
+2025-09-17T00:56:55.42562348Z 
+2025-09-17T00:56:55.42564035Z ✘ [ERROR] Could not resolve "vite"
+2025-09-17T00:56:55.425644331Z 
+2025-09-17T00:56:55.425646891Z     server/vite.ts:4:63:
+2025-09-17T00:56:55.425649541Z       4 │ import { createServer as createViteServer, createLogger } from "vite";
+2025-09-17T00:56:55.425651641Z         │                                                                ~~~~~~
+2025-09-17T00:56:55.425653741Z         ╵                                                                "./vite"
+2025-09-17T00:56:55.425655911Z 
+2025-09-17T00:56:55.425658581Z   Use the relative path "./vite" to reference the file "server/vite.ts". Without the leading "./", the path "vite" is being interpreted as a package path instead.
+2025-09-17T00:56:55.425660501Z 
+2025-09-17T00:56:55.425701962Z ✘ [ERROR] Could not resolve "nanoid"
+2025-09-17T00:56:55.425708443Z 
+2025-09-17T00:56:55.425711172Z     server/vite.ts:7:23:
+2025-09-17T00:56:55.425713412Z       7 │ import { nanoid } from "nanoid";
+2025-09-17T00:56:55.425730183Z         ╵                        ~~~~~~~~
+2025-09-17T00:56:55.425734073Z 
+2025-09-17T00:56:55.425738023Z   You can mark the path "nanoid" as external to exclude it from the bundle, which will remove this error and leave the unresolved path in the bundle.
+2025-09-17T00:56:55.425741443Z 
+2025-09-17T00:56:55.425892597Z ✘ [ERROR] Could not resolve "vite"
+2025-09-17T00:56:55.425896078Z 
+2025-09-17T00:56:55.425898218Z     vite.config.ts:1:29:
+2025-09-17T00:56:55.425900478Z       1 │ import { defineConfig } from "vite";
+2025-09-17T00:56:55.425902548Z         ╵                              ~~~~~~
+2025-09-17T00:56:55.425904538Z 
+2025-09-17T00:56:55.425906668Z   You can mark the path "vite" as external to exclude it from the bundle, which will remove this error and leave the unresolved path in the bundle.
+2025-09-17T00:56:55.425908658Z 
+2025-09-17T00:56:55.42706225Z 6 of 20 errors shown (disable the message limit with --log-limit=0)
+2025-09-17T00:56:55.487482976Z ==> Build failed 😞
+2025-09-17T00:56:55.487498496Z ==> Common ways to troubleshoot your deploy: https://render.com/docs/troubleshooting-deploys
