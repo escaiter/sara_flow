@@ -27,6 +27,9 @@
     "node_modules",
     "dist",
     "client/**/*",
-    "**/*.test.ts"
+    "**/*.test.ts",
+    "vite.config.ts",
+    "server/vite.ts",
+    "server/index.ts"
   ]
 }
