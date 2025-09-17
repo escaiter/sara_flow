@@ -88,14 +88,6 @@ app.use((req, res, next) => {
   next();
 });
 
-// Health check endpoint
-app.get("/health", (req, res) => {
-  res.json({ 
-    status: "ok", 
-    timestamp: new Date().toISOString(),
-    env: process.env.NODE_ENV || 'development'
-  });
-});
 
 // Simple root route for debugging
 app.get("/", (req, res) => {
@@ -106,6 +98,15 @@ app.get("/", (req, res) => {
   try {
     // Register API routes
     await registerRoutes(app);
+
+    // Status check endpoint (moved after registerRoutes to avoid conflicts)
+    app.get("/status", (req, res) => {
+      res.json({ 
+        status: "ok", 
+        timestamp: new Date().toISOString(),
+        env: process.env.NODE_ENV || 'development'
+      });
+    });
 
     // Error handling middleware
     app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {

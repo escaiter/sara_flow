@@ -84,16 +84,16 @@ app.use((req, res, next) => {
 
 (async () => {
   try {
-    // Add health endpoint before other routes
-    app.get("/health", (req, res) => {
+    await registerRoutes(app);
+
+    // Status check endpoint (moved after registerRoutes to avoid conflicts)
+    app.get("/status", (req, res) => {
       res.json({ 
         status: "ok", 
         timestamp: new Date().toISOString(),
         env: process.env.NODE_ENV || 'development'
       });
     });
-
-    await registerRoutes(app);
 
     app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
       const status = err.status || err.statusCode || 500;
