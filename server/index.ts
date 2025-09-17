@@ -16,7 +16,7 @@ const corsOptions = {
       return callback(null, true);
     }
     
-    // In production, allow specific domains
+    // In production, allow specific domains and patterns
     const allowedOrigins = [
       process.env.FRONTEND_URL || 'https://your-vercel-app.vercel.app',
       'https://localhost:3000',
@@ -25,11 +25,23 @@ const corsOptions = {
       'http://localhost:5173'
     ];
     
+    // Check exact matches first
     if (allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
+      return callback(null, true);
     }
+    
+    // Allow all Vercel preview deployments (*.vercel.app)
+    if (origin && /^https:\/\/.*\.vercel\.app$/.test(origin)) {
+      return callback(null, true);
+    }
+    
+    // Allow custom domains that might be configured via environment variable
+    const customDomains = process.env.ALLOWED_DOMAINS?.split(',') || [];
+    if (customDomains.some(domain => origin === domain.trim())) {
+      return callback(null, true);
+    }
+    
+    callback(new Error('Not allowed by CORS'));
   },
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'HEAD'],
@@ -81,7 +93,7 @@ app.use((req, res, next) => {
       });
     });
 
-    const server = await registerRoutes(app);
+    await registerRoutes(app);
 
     app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
       const status = err.status || err.statusCode || 500;
@@ -91,23 +103,14 @@ app.use((req, res, next) => {
       res.status(status).json({ message });
     });
 
-    // importantly only setup vite in development and after
-    // setting up all the other routes so the catch-all route
-    // doesn't interfere with the other routes
-    if (app.get("env") === "development") {
-      await setupVite(app, server);
-    } else {
-      serveStatic(app);
-    }
-
     // ALWAYS serve the app on the port specified in the environment variable PORT
     // Other ports are firewalled. Default to 5000 if not specified.
     // this serves both the API and the client.
     // It is the only port that is not firewalled.
     const port = parseInt(process.env.PORT || '5000', 10);
     
-    // Fix: Use proper Express server binding with separate arguments
-    server.listen(port, '0.0.0.0', () => {
+    // Create the server first
+    const server = app.listen(port, '0.0.0.0', () => {
       log(`serving on port ${port}`);
       log(`Server successfully bound to 0.0.0.0:${port}`);
       log(`Environment: ${process.env.NODE_ENV || 'development'}`);
@@ -123,6 +126,15 @@ app.use((req, res, next) => {
       
       process.exit(1);
     });
+
+    // importantly only setup vite in development and after
+    // setting up all the other routes so the catch-all route
+    // doesn't interfere with the other routes
+    if (app.get("env") === "development") {
+      await setupVite(app, server);
+    } else {
+      serveStatic(app);
+    }
 
   } catch (e) {
     console.error('registerRoutes failed:', e);
