@@ -97,42 +97,78 @@ app.get("/health", (req, res) => {
 });
 
 (async () => {
-  // Register API routes
-  const server = await registerRoutes(app);
+  try {
+    // Register API routes
+    const server = await registerRoutes(app);
 
-  // Error handling middleware
-  app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
-    const status = err.status || err.statusCode || 500;
-    const message = err.message || "Internal Server Error";
+    // Error handling middleware
+    app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
+      const status = err.status || err.statusCode || 500;
+      const message = err.message || "Internal Server Error";
 
-    console.error(`Error ${status}: ${message}`, err);
-    res.status(status).json({ message });
-  });
+      console.error(`Error ${status}: ${message}`, err);
+      res.status(status).json({ message });
+    });
 
-  // Catch-all for undefined routes
-  app.use("*", (req, res) => {
-    res.status(404).json({ message: "API endpoint not found" });
-  });
+    // Catch-all for undefined routes
+    app.use("*", (req, res) => {
+      res.status(404).json({ message: "API endpoint not found" });
+    });
 
-  // ALWAYS serve the app on the port specified in the environment variable PORT
-  // Other ports are firewalled. Default to 5000 if not specified.
-  const port = parseInt(process.env.PORT || '5000', 10);
-  server.listen({
-    port,
-    host: "0.0.0.0",
-    reusePort: true,
-  }, () => {
-    console.log(`${new Date().toLocaleTimeString("en-US", {
-      hour: "numeric",
-      minute: "2-digit",
-      second: "2-digit", 
-      hour12: true,
-    })} [backend] Backend server running on port ${port}`);
-    console.log(`${new Date().toLocaleTimeString("en-US", {
+    // ALWAYS serve the app on the port specified in the environment variable PORT
+    // Other ports are firewalled. Default to 5000 if not specified.
+    const port = parseInt(process.env.PORT || '5000', 10);
+    
+    // Fix: Use proper Express server binding with separate arguments
+    server.listen(port, '0.0.0.0', () => {
+      console.log(`${new Date().toLocaleTimeString("en-US", {
+        hour: "numeric",
+        minute: "2-digit",
+        second: "2-digit", 
+        hour12: true,
+      })} [backend] Backend server running on port ${port}`);
+      console.log(`${new Date().toLocaleTimeString("en-US", {
+        hour: "numeric",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: true,
+      })} [backend] Environment: ${process.env.NODE_ENV || 'development'}`);
+      console.log(`${new Date().toLocaleTimeString("en-US", {
+        hour: "numeric",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: true,
+      })} [backend] Server successfully bound to 0.0.0.0:${port}`);
+    });
+
+    // Handle server errors
+    server.on('error', (err: any) => {
+      console.error(`${new Date().toLocaleTimeString("en-US", {
+        hour: "numeric",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: true,
+      })} [backend] Server error:`, err);
+      
+      if (err.code === 'EADDRINUSE') {
+        console.error(`${new Date().toLocaleTimeString("en-US", {
+          hour: "numeric",
+          minute: "2-digit",
+          second: "2-digit",
+          hour12: true,
+        })} [backend] Port ${port} is already in use`);
+      }
+      
+      process.exit(1);
+    });
+
+  } catch (e) {
+    console.error(`${new Date().toLocaleTimeString("en-US", {
       hour: "numeric",
       minute: "2-digit",
       second: "2-digit",
       hour12: true,
-    })} [backend] Environment: ${process.env.NODE_ENV || 'development'}`);
-  });
+    })} [backend] registerRoutes failed:`, e);
+    process.exit(1);
+  }
 })();
