@@ -14,7 +14,10 @@ export function ChatMessages({ sessionId, isTyping }: ChatMessagesProps) {
 
   const { data: messages = [], isLoading } = useQuery<Message[]>({
     queryKey: ['/api/chat', sessionId, 'messages'],
-    enabled: !!sessionId,
+    enabled: false, // Disabled to prevent automatic refetch that clears optimistic messages
+    initialData: [],
+    refetchOnWindowFocus: false,
+    refetchOnMount: false,
   });
 
   useEffect(() => {
