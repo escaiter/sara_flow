@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "buildCommand": "cd client && vite build",
+  "buildCommand": "vite build",
   "outputDirectory": "dist/public",
   "rewrites": [
     {
