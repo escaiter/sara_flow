@@ -61,10 +61,8 @@ export function ChatInput({ sessionId, setIsTyping }: ChatInputProps) {
         botMessage,
       ]);
 
-      // Invalidar cache para mantener sincronización
-      queryClient.invalidateQueries({
-        queryKey: ['/api/chat', sessionId, 'messages']
-      });
+      // NOTE: No invalidamos queries porque usamos estado local optimista
+      // La invalidación causaría pérdida de mensajes ya que el backend mock devuelve []
       
       toast({
         description: "Mensaje enviado correctamente",
