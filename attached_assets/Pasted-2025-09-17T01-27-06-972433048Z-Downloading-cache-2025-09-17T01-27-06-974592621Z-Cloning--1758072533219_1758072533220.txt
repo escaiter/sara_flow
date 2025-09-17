@@ -1,0 +1,67 @@
+2025-09-17T01:27:06.972433048Z ==> Downloading cache...
+2025-09-17T01:27:06.974592621Z ==> Cloning from https://github.com/escaiter/sara_flow
+2025-09-17T01:27:07.571517297Z ==> Checking out commit 2daa5cd219cdb579ab651628b57efe7d661fb52f in branch main
+2025-09-17T01:27:19.042576775Z ==> Transferred 163MB in 8s. Extraction took 3s.
+2025-09-17T01:27:22.17750491Z ==> Using Node.js version 22.16.0 (default)
+2025-09-17T01:27:22.201678342Z ==> Docs on specifying a Node.js version: https://render.com/docs/node-version
+2025-09-17T01:27:22.259188439Z ==> Running build command 'npm install && npx esbuild server/backend.ts --platform=node --bundle --format=cjs --outfile=dist/backend.js'...
+2025-09-17T01:27:23.250644548Z 
+2025-09-17T01:27:23.250690219Z up to date, audited 470 packages in 929ms
+2025-09-17T01:27:23.250696559Z 
+2025-09-17T01:27:23.250699319Z 59 packages are looking for funding
+2025-09-17T01:27:23.250708149Z   run `npm fund` for details
+2025-09-17T01:27:23.252845222Z 
+2025-09-17T01:27:23.252862532Z 3 low severity vulnerabilities
+2025-09-17T01:27:23.252866373Z 
+2025-09-17T01:27:23.252869913Z To address all issues, run:
+2025-09-17T01:27:23.252873323Z   npm audit fix
+2025-09-17T01:27:23.252876443Z 
+2025-09-17T01:27:23.252879983Z Run `npm audit` for details.
+2025-09-17T01:27:24.721868716Z 
+2025-09-17T01:27:24.721896266Z   dist/backend.js  16.8mb ⚠️
+2025-09-17T01:27:24.721899436Z 
+2025-09-17T01:27:24.721902676Z ⚡ Done in 827ms
+2025-09-17T01:27:38.153395436Z ==> Uploading build...
+2025-09-17T01:27:51.328055084Z ==> Uploaded in 10.4s. Compression took 2.7s
+2025-09-17T01:27:51.35369835Z ==> Build successful 🎉
+2025-09-17T01:27:54.810224702Z ==> Deploying...
+2025-09-17T01:28:12.200815262Z ==> Running 'NODE_ENV=production node dist/backend.js'
+2025-09-17T01:28:14.109678521Z file:///opt/render/project/src/dist/backend.js:38
+2025-09-17T01:28:14.109698432Z     var relative = require("path").relative;
+2025-09-17T01:28:14.109702362Z                    ^
+2025-09-17T01:28:14.109704863Z 
+2025-09-17T01:28:14.109708103Z ReferenceError: require is not defined in ES module scope, you can use import instead
+2025-09-17T01:28:14.109711883Z This file is being treated as an ES module because it has a '.js' file extension and '/opt/render/project/src/package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.
+2025-09-17T01:28:14.109715843Z     at node_modules/depd/index.js (file:///opt/render/project/src/dist/backend.js:38:20)
+2025-09-17T01:28:14.109718733Z     at __require (file:///opt/render/project/src/dist/backend.js:12:51)
+2025-09-17T01:28:14.109721503Z     at node_modules/body-parser/index.js (file:///opt/render/project/src/dist/backend.js:16814:22)
+2025-09-17T01:28:14.109723994Z     at __require (file:///opt/render/project/src/dist/backend.js:12:51)
+2025-09-17T01:28:14.109726874Z     at node_modules/express/lib/express.js (file:///opt/render/project/src/dist/backend.js:23447:22)
+2025-09-17T01:28:14.109729204Z     at __require (file:///opt/render/project/src/dist/backend.js:12:51)
+2025-09-17T01:28:14.109731714Z     at node_modules/express/index.js (file:///opt/render/project/src/dist/backend.js:23516:23)
+2025-09-17T01:28:14.109734564Z     at __require (file:///opt/render/project/src/dist/backend.js:12:51)
+2025-09-17T01:28:14.109737294Z     at file:///opt/render/project/src/dist/backend.js:337607:30
+2025-09-17T01:28:14.109740035Z     at ModuleJob.run (node:internal/modules/esm/module_job:274:25)
+2025-09-17T01:28:14.109742415Z 
+2025-09-17T01:28:14.109744195Z Node.js v22.16.0
+2025-09-17T01:28:15.672596984Z ==> Exited with status 1
+2025-09-17T01:28:15.688796773Z ==> Common ways to troubleshoot your deploy: https://render.com/docs/troubleshooting-deploys
+2025-09-17T01:28:21.033321573Z ==> Running 'NODE_ENV=production node dist/backend.js'
+2025-09-17T01:28:23.029493133Z file:///opt/render/project/src/dist/backend.js:38
+2025-09-17T01:28:23.029553796Z     var relative = require("path").relative;
+2025-09-17T01:28:23.029557366Z                    ^
+2025-09-17T01:28:23.029559946Z 
+2025-09-17T01:28:23.029562186Z ReferenceError: require is not defined in ES module scope, you can use import instead
+2025-09-17T01:28:23.029566526Z This file is being treated as an ES module because it has a '.js' file extension and '/opt/render/project/src/package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.
+2025-09-17T01:28:23.029570337Z     at node_modules/depd/index.js (file:///opt/render/project/src/dist/backend.js:38:20)
+2025-09-17T01:28:23.029572497Z     at __require (file:///opt/render/project/src/dist/backend.js:12:51)
+2025-09-17T01:28:23.029575527Z     at node_modules/body-parser/index.js (file:///opt/render/project/src/dist/backend.js:16814:22)
+2025-09-17T01:28:23.029577277Z     at __require (file:///opt/render/project/src/dist/backend.js:12:51)
+2025-09-17T01:28:23.029578987Z     at node_modules/express/lib/express.js (file:///opt/render/project/src/dist/backend.js:23447:22)
+2025-09-17T01:28:23.029580727Z     at __require (file:///opt/render/project/src/dist/backend.js:12:51)
+2025-09-17T01:28:23.029582507Z     at node_modules/express/index.js (file:///opt/render/project/src/dist/backend.js:23516:23)
+2025-09-17T01:28:23.029584487Z     at __require (file:///opt/render/project/src/dist/backend.js:12:51)
+2025-09-17T01:28:23.029586427Z     at file:///opt/render/project/src/dist/backend.js:337607:30
+2025-09-17T01:28:23.029588108Z     at ModuleJob.run (node:internal/modules/esm/module_job:274:25)
+2025-09-17T01:28:23.02963769Z 
+2025-09-17T01:28:23.02964027Z Node.js v22.16.0
