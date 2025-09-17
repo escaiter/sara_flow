@@ -1,0 +1,50 @@
+2025-09-17T01:13:14.963039412Z     server/vite.ts:4:63:
+2025-09-17T01:13:14.963043702Z       4 │ import { createServer as createViteServer, createLogger } from "vite";
+2025-09-17T01:13:14.963047522Z         │                                                                ~~~~~~
+2025-09-17T01:13:14.963051102Z         ╵                                                                "./vite"
+2025-09-17T01:13:14.963054493Z 
+2025-09-17T01:13:14.963058593Z   Use the relative path "./vite" to reference the file "server/vite.ts". Without the leading "./", the path "vite" is being interpreted as a package path instead.
+2025-09-17T01:13:14.963062243Z 
+2025-09-17T01:13:14.973190588Z ✘ [ERROR] Could not resolve "vite"
+2025-09-17T01:13:14.973201738Z 
+2025-09-17T01:13:14.973205178Z     vite.config.ts:1:29:
+2025-09-17T01:13:14.973207998Z       1 │ import { defineConfig } from "vite";
+2025-09-17T01:13:14.973210918Z         ╵                              ~~~~~~
+2025-09-17T01:13:14.973213518Z 
+2025-09-17T01:13:14.973217268Z   You can mark the path "vite" as external to exclude it from the bundle, which will remove this error and leave the unresolved path in the bundle.
+2025-09-17T01:13:14.973219978Z 
+2025-09-17T01:13:14.975725314Z ✘ [ERROR] Could not resolve "@vitejs/plugin-react"
+2025-09-17T01:13:14.975743675Z 
+2025-09-17T01:13:14.975750244Z     vite.config.ts:2:18:
+2025-09-17T01:13:14.975754085Z       2 │ import react from "@vitejs/plugin-react";
+2025-09-17T01:13:14.975757255Z         ╵                   ~~~~~~~~~~~~~~~~~~~~~~
+2025-09-17T01:13:14.975760035Z 
+2025-09-17T01:13:14.975764835Z   You can mark the path "@vitejs/plugin-react" as external to exclude it from the bundle, which will remove this error and leave the unresolved path in the bundle.
+2025-09-17T01:13:14.975767575Z 
+2025-09-17T01:13:14.97825246Z ✘ [ERROR] Could not resolve "@replit/vite-plugin-runtime-error-modal"
+2025-09-17T01:13:14.9782639Z 
+2025-09-17T01:13:14.9782676Z     vite.config.ts:4:32:
+2025-09-17T01:13:14.978284661Z       4 │ ...runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
+2025-09-17T01:13:14.978286751Z         ╵                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2025-09-17T01:13:14.978288351Z 
+2025-09-17T01:13:14.978292361Z   You can mark the path "@replit/vite-plugin-runtime-error-modal" as external to exclude it from the bundle, which will remove this error and leave the unresolved path in the bundle.
+2025-09-17T01:13:14.978294091Z 
+2025-09-17T01:13:14.981592404Z ✘ [ERROR] Could not resolve "@replit/vite-plugin-cartographer"
+2025-09-17T01:13:14.981603994Z 
+2025-09-17T01:13:14.981608325Z     vite.config.ts:13:23:
+2025-09-17T01:13:14.981610905Z       13 │ ...      await import("@replit/vite-plugin-cartographer").then((m) =>
+2025-09-17T01:13:14.981613045Z          ╵                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2025-09-17T01:13:14.981614635Z 
+2025-09-17T01:13:14.981618545Z   You can mark the path "@replit/vite-plugin-cartographer" as external to exclude it from the bundle, which will remove this error and leave the unresolved path in the bundle. You can also add ".catch()" here to handle this failure at run-time instead of bundle-time.
+2025-09-17T01:13:14.981620285Z 
+2025-09-17T01:13:15.08722416Z ✘ [ERROR] Could not resolve "@replit/vite-plugin-dev-banner"
+2025-09-17T01:13:15.087242211Z 
+2025-09-17T01:13:15.087246941Z     vite.config.ts:16:23:
+2025-09-17T01:13:15.087253211Z       16 │           await import("@replit/vite-plugin-dev-banner").then((m) =>
+2025-09-17T01:13:15.087257411Z          ╵                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2025-09-17T01:13:15.087260101Z 
+2025-09-17T01:13:15.087264191Z   You can mark the path "@replit/vite-plugin-dev-banner" as external to exclude it from the bundle, which will remove this error and leave the unresolved path in the bundle. You can also add ".catch()" here to handle this failure at run-time instead of bundle-time.
+2025-09-17T01:13:15.087266701Z 
+2025-09-17T01:13:15.579163335Z 6 errors
+2025-09-17T01:13:15.656563024Z ==> Build failed 😞
+2025-09-17T01:13:15.656586194Z ==> Common ways to troubleshoot your deploy: https://render.com/docs/troubleshooting-deploys
