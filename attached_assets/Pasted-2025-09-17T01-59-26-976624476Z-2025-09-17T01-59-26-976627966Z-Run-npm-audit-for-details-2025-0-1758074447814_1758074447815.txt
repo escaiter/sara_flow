@@ -1,0 +1,51 @@
+2025-09-17T01:59:26.976624476Z 
+2025-09-17T01:59:26.976627966Z Run `npm audit` for details.
+2025-09-17T01:59:27.692441355Z ▲ [WARNING] "import.meta" is not available with the "cjs" output format and will be empty [empty-import-meta]
+2025-09-17T01:59:27.692462946Z 
+2025-09-17T01:59:27.692468306Z     server/vite.ts:71:32:
+2025-09-17T01:59:27.692473056Z       71 │   const distPath = path.resolve(import.meta.dirname, "public");
+2025-09-17T01:59:27.692477836Z          ╵                                 ~~~~~~~~~~~
+2025-09-17T01:59:27.692481936Z 
+2025-09-17T01:59:27.692486606Z   You need to set the output format to "esm" for "import.meta" to work correctly.
+2025-09-17T01:59:27.692490366Z 
+2025-09-17T01:59:27.692506327Z ✘ [ERROR] Could not resolve "vite"
+2025-09-17T01:59:27.692510327Z 
+2025-09-17T01:59:27.692515067Z     server/vite.ts:4:63:
+2025-09-17T01:59:27.692518977Z       4 │ import { createServer as createViteServer, createLogger } from "vite";
+2025-09-17T01:59:27.692523087Z         │                                                                ~~~~~~
+2025-09-17T01:59:27.692527167Z         ╵                                                                "./vite"
+2025-09-17T01:59:27.692530987Z 
+2025-09-17T01:59:27.692536057Z   Use the relative path "./vite" to reference the file "server/vite.ts". Without the leading "./", the path "vite" is being interpreted as a package path instead.
+2025-09-17T01:59:27.692539977Z 
+2025-09-17T01:59:27.693315993Z ✘ [ERROR] Top-level await is currently not supported with the "cjs" output format
+2025-09-17T01:59:27.693327993Z 
+2025-09-17T01:59:27.693332764Z     vite.config.ts:13:10:
+2025-09-17T01:59:27.693337013Z       13 │           await import("@replit/vite-plugin-cartographer").then((m...
+2025-09-17T01:59:27.693341214Z          ╵           ~~~~~
+2025-09-17T01:59:27.693345034Z 
+2025-09-17T01:59:27.693349174Z ✘ [ERROR] Top-level await is currently not supported with the "cjs" output format
+2025-09-17T01:59:27.693352804Z 
+2025-09-17T01:59:27.693356714Z     vite.config.ts:16:10:
+2025-09-17T01:59:27.693360484Z       16 │           await import("@replit/vite-plugin-dev-banner").then((m) =>
+2025-09-17T01:59:27.693364284Z          ╵           ~~~~~
+2025-09-17T01:59:27.693367914Z 
+2025-09-17T01:59:27.694932576Z ✘ [ERROR] Could not resolve "vite"
+2025-09-17T01:59:27.694941266Z 
+2025-09-17T01:59:27.694944416Z     vite.config.ts:1:29:
+2025-09-17T01:59:27.694947006Z       1 │ import { defineConfig } from "vite";
+2025-09-17T01:59:27.694949526Z         ╵                              ~~~~~~
+2025-09-17T01:59:27.694951676Z 
+2025-09-17T01:59:27.694954837Z   You can mark the path "vite" as external to exclude it from the bundle, which will remove this error and leave the unresolved path in the bundle.
+2025-09-17T01:59:27.694957277Z 
+2025-09-17T01:59:27.701426748Z ✘ [ERROR] Could not resolve "@vitejs/plugin-react"
+2025-09-17T01:59:27.701452398Z 
+2025-09-17T01:59:27.701455209Z     vite.config.ts:2:18:
+2025-09-17T01:59:27.701457009Z       2 │ import react from "@vitejs/plugin-react";
+2025-09-17T01:59:27.701458719Z         ╵                   ~~~~~~~~~~~~~~~~~~~~~~
+2025-09-17T01:59:27.701460269Z 
+2025-09-17T01:59:27.701462549Z   You can mark the path "@vitejs/plugin-react" as external to exclude it from the bundle, which will remove this error and leave the unresolved path in the bundle.
+2025-09-17T01:59:27.701464289Z 
+2025-09-17T01:59:28.317459679Z 1 of 6 warnings and 5 of 8 errors shown (disable the message limit with --log-limit=0)
+2025-09-17T01:59:28.365672709Z ==> Build failed 😞
+2025-09-17T01:59:28.365689439Z ==> Common ways to troubleshoot your deploy: https://render.com/docs/troubleshooting-deploys
+2025-09-17T01:59:23.034604342Z ==> Transferred 163MB in 7s. Extraction took 5s.
