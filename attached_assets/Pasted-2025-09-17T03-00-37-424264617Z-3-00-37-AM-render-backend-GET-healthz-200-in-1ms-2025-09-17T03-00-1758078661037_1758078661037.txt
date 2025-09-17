@@ -1,0 +1,93 @@
+2025-09-17T03:00:37.424264617Z 3:00:37 AM [render-backend] GET /healthz 200 in 1ms
+2025-09-17T03:00:42.425720266Z 3:00:42 AM [render-backend] GET /healthz 200 in 1ms
+2025-09-17T03:00:47.424296306Z 3:00:47 AM [render-backend] GET /healthz 200 in 0ms
+2025-09-17T03:00:52.423623634Z 3:00:52 AM [render-backend] GET /healthz 200 in 1ms
+2025-09-17T03:00:57.425095551Z 3:00:57 AM [render-backend] GET /healthz 200 in 0ms
+2025-09-17T03:01:02.425272176Z 3:01:02 AM [render-backend] GET /healthz 200 in 1ms
+2025-09-17T03:01:07.425142004Z 3:01:07 AM [render-backend] GET /healthz 200 in 1ms
+2025-09-17T03:01:07.426033375Z 3:01:07 AM [render-backend] GET /healthz 200 in 0ms
+2025-09-17T03:01:12.423662758Z 3:01:12 AM [render-backend] GET /healthz 200 in 1ms
+2025-09-17T03:01:17.424107458Z 3:01:17 AM [render-backend] GET /healthz 200 in 0ms
+2025-09-17T03:01:22.422980868Z 3:01:22 AM [render-backend] GET /healthz 200 in 0ms
+2025-09-17T03:01:27.423912177Z 3:01:27 AM [render-backend] GET /healthz 200 in 1ms
+2025-09-17T03:01:32.424678631Z 3:01:32 AM [render-backend] GET /healthz 200 in 1ms
+2025-09-17T03:01:37.428524818Z 3:01:37 AM [render-backend] GET /healthz 200 in 0ms
+2025-09-17T03:01:37.428552909Z 3:01:37 AM [render-backend] GET /healthz 200 in 1ms
+2025-09-17T03:01:42.423718879Z 3:01:42 AM [render-backend] GET /healthz 200 in 1ms
+2025-09-17T03:01:47.42617787Z 3:01:47 AM [render-backend] GET /healthz 200 in 1ms
+2025-09-17T03:01:52.426350227Z 3:01:52 AM [render-backend] GET /healthz 200 in 0ms
+2025-09-17T03:01:57.423939691Z 3:01:57 AM [render-backend] GET /healthz 200 in 0ms
+2025-09-17T03:02:02.424441454Z 3:02:02 AM [render-backend] GET /healthz 200 in 0ms
+2025-09-17T03:02:07.426275277Z 3:02:07 AM [render-backend] GET /healthz 200 in 0ms
+2025-09-17T03:02:07.426902272Z 3:02:07 AM [render-backend] GET /healthz 200 in 1ms
+2025-09-17T03:02:12.424021983Z 3:02:12 AM [render-backend] GET /healthz 200 in 0ms
+2025-09-17T03:02:17.424633276Z 3:02:17 AM [render-backend] GET /healthz 200 in 0ms
+2025-09-17T03:02:22.424187723Z 3:02:22 AM [render-backend] GET /healthz 200 in 0ms
+2025-09-17T03:02:27.423182626Z 3:02:27 AM [render-backend] GET /healthz 200 in 0ms
+2025-09-17T03:02:32.426785527Z 3:02:32 AM [render-backend] GET /healthz 200 in 1ms
+2025-09-17T03:02:37.425634245Z 3:02:37 AM [render-backend] GET /healthz 200 in 2ms
+2025-09-17T03:02:37.42669676Z 3:02:37 AM [render-backend] GET /healthz 200 in 0ms
+2025-09-17T03:02:42.426899189Z 3:02:42 AM [render-backend] GET /healthz 200 in 3ms
+2025-09-17T03:02:47.423074781Z 3:02:47 AM [render-backend] GET /healthz 200 in 0ms
+2025-09-17T03:02:52.423838241Z 3:02:52 AM [render-backend] GET /healthz 200 in 1ms
+2025-09-17T03:02:57.424941519Z 3:02:57 AM [render-backend] GET /healthz 200 in 0ms
+2025-09-17T03:03:02.423614668Z 3:03:02 AM [render-backend] GET /healthz 200 in 1ms
+2025-09-17T03:03:07.424259443Z 3:03:07 AM [render-backend] GET /healthz 200 in 0ms
+2025-09-17T03:03:07.512558381Z 3:03:07 AM [render-backend] GET /healthz 200 in 0ms
+2025-09-17T03:03:12.424990189Z 3:03:12 AM [render-backend] GET /healthz 200 in 1ms
+2025-09-17T03:03:17.426642157Z 3:03:17 AM [render-backend] GET /healthz 200 in 1ms
+2025-09-17T03:03:22.423912089Z 3:03:22 AM [render-backend] GET /healthz 200 in 1ms
+2025-09-17T03:03:27.423490875Z 3:03:27 AM [render-backend] GET /healthz 200 in 1ms
+2025-09-17T03:03:32.423721637Z 3:03:32 AM [render-backend] GET /healthz 200 in 1ms
+2025-09-17T03:03:37.424225033Z 3:03:37 AM [render-backend] GET /healthz 200 in 0ms
+2025-09-17T03:03:42.424866834Z 3:03:42 AM [render-backend] GET /healthz 200 in 1ms
+2025-09-17T03:03:47.430367598Z 3:03:47 AM [render-backend] GET /healthz 200 in 0ms
+2025-09-17T03:03:52.423404585Z 3:03:52 AM [render-backend] GET /healthz 200 in 0ms
+2025-09-17T03:03:57.423538659Z 3:03:57 AM [render-backend] GET /healthz 200 in 1ms
+2025-09-17T03:04:02.425080436Z 3:04:02 AM [render-backend] GET /healthz 200 in 0ms
+2025-09-17T03:04:07.423664022Z 3:04:07 AM [render-backend] GET /healthz 200 in 1ms
+2025-09-17T03:04:12.424173723Z 3:04:12 AM [render-backend] GET /healthz 200 in 0ms
+2025-09-17T03:04:17.424105309Z 3:04:17 AM [render-backend] GET /healthz 200 in 0ms
+2025-09-17T03:08:42.336331048Z ==> Deploying...
+2025-09-17T03:09:01.771308312Z ==> Running 'NODE_ENV=production node dist/render-backend.cjs'
+2025-09-17T03:09:02.562679686Z 3:09:02 AM [render-backend] Backend server running on port 10000
+2025-09-17T03:09:02.563067866Z 3:09:02 AM [render-backend] Environment: production
+2025-09-17T03:09:02.56319179Z 3:09:02 AM [render-backend] Server successfully bound to 0.0.0.0:10000
+2025-09-17T03:09:02.797949294Z 3:09:02 AM [render-backend] GET /healthz 200 in 4ms
+2025-09-17T03:09:03.095741296Z 3:09:03 AM [render-backend] HEAD / 200 in 1ms
+2025-09-17T03:09:03.894555837Z ==> Your service is live 🎉
+2025-09-17T03:09:03.923721366Z ==> 
+2025-09-17T03:09:03.950852793Z ==> ///////////////////////////////////////////////////////////
+2025-09-17T03:09:03.978041632Z ==> 
+2025-09-17T03:09:04.00294441Z ==> Available at your primary URL https://chatbot-backend-bg4o.onrender.com
+2025-09-17T03:09:04.027172048Z ==> 
+2025-09-17T03:09:04.056828816Z ==> ///////////////////////////////////////////////////////////
+2025-09-17T03:09:03.68988745Z 3:09:03 AM [render-backend] GET /healthz 200 in 1ms
+2025-09-17T03:09:05.3488549Z 3:09:05 AM [render-backend] GET / 200 in 1ms
+2025-09-17T03:09:07.792133498Z 3:09:07 AM [render-backend] GET /healthz 200 in 0ms
+2025-09-17T03:09:12.792585588Z 3:09:12 AM [render-backend] GET /healthz 200 in 1ms
+2025-09-17T03:09:12.793680869Z 3:09:12 AM [render-backend] GET /healthz 200 in 0ms
+2025-09-17T03:09:17.791882719Z 3:09:17 AM [render-backend] GET /healthz 200 in 1ms
+2025-09-17T03:09:22.792711694Z 3:09:22 AM [render-backend] GET /healthz 200 in 2ms
+2025-09-17T03:09:27.791615898Z 3:09:27 AM [render-backend] GET /healthz 200 in 1ms
+2025-09-17T03:09:32.791867462Z 3:09:32 AM [render-backend] GET /healthz 200 in 1ms
+2025-09-17T03:09:37.79143748Z 3:09:37 AM [render-backend] GET /healthz 200 in 1ms
+2025-09-17T03:09:42.792017227Z 3:09:42 AM [render-backend] GET /healthz 200 in 1ms
+2025-09-17T03:09:42.793679333Z 3:09:42 AM [render-backend] GET /healthz 200 in 1ms
+2025-09-17T03:09:47.79126761Z 3:09:47 AM [render-backend] GET /healthz 200 in 0ms
+2025-09-17T03:09:52.791862352Z 3:09:52 AM [render-backend] GET /healthz 200 in 1ms
+2025-09-17T03:09:57.7914684Z 3:09:57 AM [render-backend] GET /healthz 200 in 1ms
+2025-09-17T03:09:57.7914684Z 3:09:57 AM [render-backend] GET /healthz 200 in 1ms
+2025-09-17T03:10:02.791647315Z 3:10:02 AM [render-backend] GET /healthz 200 in 1ms
+2025-09-17T03:10:07.791590476Z 3:10:07 AM [render-backend] GET /healthz 200 in 1ms
+2025-09-17T03:10:12.792081545Z 3:10:12 AM [render-backend] GET /healthz 200 in 1ms
+2025-09-17T03:10:12.793556536Z 3:10:12 AM [render-backend] GET /healthz 200 in 1ms
+2025-09-17T03:10:17.791148487Z 3:10:17 AM [render-backend] GET /healthz 200 in 0ms
+2025-09-17T03:10:22.791153586Z 3:10:22 AM [render-backend] GET /healthz 200 in 0ms
+2025-09-17T03:10:27.801897434Z 3:10:27 AM [render-backend] GET /healthz 200 in 0ms
+2025-09-17T03:10:32.791369858Z 3:10:32 AM [render-backend] GET /healthz 200 in 1ms
+2025-09-17T03:10:37.791295921Z 3:10:37 AM [render-backend] GET /healthz 200 in 0ms
+2025-09-17T03:10:42.791278069Z 3:10:42 AM [render-backend] GET /healthz 200 in 0ms
+2025-09-17T03:10:42.792019089Z 3:10:42 AM [render-backend] GET /healthz 200 in 0ms
+2025-09-17T03:10:47.791003861Z 3:10:47 AM [render-backend] GET /healthz 200 in 0ms
+2025-09-17T03:10:52.791525318Z 3:10:52 AM [render-backend] GET /healthz 200 in 1ms
