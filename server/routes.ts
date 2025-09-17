@@ -1,5 +1,4 @@
 import type { Express } from "express";
-import { createServer, type Server } from "http";
 import { storage } from "./storage.js";
 import { chatMessageSchema } from "../shared/schema.js";
 import { z } from "zod";
@@ -80,7 +79,7 @@ class DialogflowClient {
 
 const dialogflowClient = new DialogflowClient();
 
-export async function registerRoutes(app: Express): Promise<Server> {
+export async function registerRoutes(app: Express): Promise<void> {
   // Chat endpoint
   app.post("/api/chat", async (req, res) => {
     try {
@@ -220,6 +219,4 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  const httpServer = createServer(app);
-  return httpServer;
 }

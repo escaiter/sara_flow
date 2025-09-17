@@ -65,7 +65,8 @@ app.use((req, res, next) => {
 
   res.on("finish", () => {
     const duration = Date.now() - start;
-    if (path.startsWith("/api")) {
+    // Log all requests for debugging (not just /api)
+    if (true) {
       let logLine = `${req.method} ${path} ${res.statusCode} in ${duration}ms`;
       if (capturedJsonResponse) {
         logLine += ` :: ${JSON.stringify(capturedJsonResponse)}`;
@@ -94,6 +95,11 @@ app.get("/health", (req, res) => {
     timestamp: new Date().toISOString(),
     env: process.env.NODE_ENV || 'development'
   });
+});
+
+// Simple root route for debugging
+app.get("/", (req, res) => {
+  res.send("Backend is running");
 });
 
 (async () => {
