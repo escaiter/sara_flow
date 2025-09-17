@@ -94,11 +94,25 @@ app.post("/api/chat", (req: Request, res: Response) => {
     return res.status(400).json({ error: "Message is required" });
   }
   
+  // Get session ID from header
+  const sessionId = req.headers['x-session-id'] as string || nanoid();
+  
   const response = `Hola, recibí tu mensaje: ${message}`;
   res.json({ 
-    message: response,
-    timestamp: new Date().toISOString()
+    reply: response,        // Frontend expects "reply", not "message"
+    sessionId: sessionId    // Include sessionId in response
   });
+});
+
+// Add missing routes that frontend expects
+app.head("/api/chat/:sessionId/exists", (req: Request, res: Response) => {
+  // For now, assume all sessions exist (mock behavior)
+  res.status(204).end();
+});
+
+app.get("/api/chat/:sessionId/messages", (req: Request, res: Response) => {
+  // Return empty array for now (mock behavior)
+  res.json([]);
 });
 
 // Error handling middleware
