@@ -68,17 +68,18 @@ app.use((req, res, next) => {
   next();
 });
 
+// Health check endpoints (handle both GET and HEAD)
+app.all("/healthz", (req: Request, res: Response) => {
+  res.type('text/plain').send('ok');
+});
+
+app.all("/status", (req: Request, res: Response) => {
+  res.type('text/plain').send('ok');
+});
+
 // Routes
 app.get("/", (req: Request, res: Response) => {
   res.send("Backend is running");
-});
-
-app.get("/status", (req: Request, res: Response) => {
-  res.json({ 
-    status: "ok", 
-    timestamp: new Date().toISOString(),
-    env: process.env.NODE_ENV || 'development'
-  });
 });
 
 app.post("/api/chat/session", (req: Request, res: Response) => {

@@ -82,18 +82,18 @@ app.use((req, res, next) => {
   next();
 });
 
+// Health check routes (placed before other routes to avoid conflicts)
+app.all("/healthz", (req: Request, res: Response) => {
+  res.type('text/plain').send('ok');
+});
+
+app.all("/status", (req: Request, res: Response) => {
+  res.type('text/plain').send('ok');
+});
+
 (async () => {
   try {
     await registerRoutes(app);
-
-    // Status check endpoint (moved after registerRoutes to avoid conflicts)
-    app.get("/status", (req, res) => {
-      res.json({ 
-        status: "ok", 
-        timestamp: new Date().toISOString(),
-        env: process.env.NODE_ENV || 'development'
-      });
-    });
 
     app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
       const status = err.status || err.statusCode || 500;
